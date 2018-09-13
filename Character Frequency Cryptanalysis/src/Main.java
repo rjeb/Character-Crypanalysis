@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class Main {
@@ -28,12 +32,19 @@ public class Main {
 		System.out.println("Please enter a ciphertext:");
 		ciphertext = scanner.nextLine().toLowerCase();
 		
-		System.out.println(ciphertext);
-		
+		//adjusts frequency treemap based on what characters are in the ciphertext
 		for (int i = 0; i < ciphertext.length(); i++) {
 			Character value = ciphertext.charAt(i);
 			characterFrequencies.put(value, (characterFrequencies.get(value)+1));
 		}
+		
+		System.out.println("Character Frequencies:");
+		for (Map.Entry<Character, Integer> c : characterFrequencies.entrySet()) {
+			if (c.getValue()>0) {
+				System.out.println(c + ": " + c.getValue());
+			}
+		}
+		
 		
 		scanner.close();
 	}
